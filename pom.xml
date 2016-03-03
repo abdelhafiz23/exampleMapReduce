@@ -33,7 +33,11 @@
 	  </execution>
 	</executions>
 	<configuration>
-	  <finalName>uber-hadoop-1.0-SNAPSHOT</finalName>
+	    <finalName>uber-hadoop-1.0-SNAPSHOT</finalName>
+        <transformers>
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+            </transformer>
+        </transformers>
 	</configuration>
       </plugin> 
     </plugins>
