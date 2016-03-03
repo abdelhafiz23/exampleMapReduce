@@ -34,9 +34,10 @@ public class MonDriver extends Configured implements Tool{
         job.setJarByClass(MonDriver.class);
         job.setInputFormatClass(TextInputFormat.class);
 
-        FileInputFormat.addInputPath(job,new Path(args[0]));
+        //FileInputFormat.addInputPath(job,new Path(args[0]));
+        FileInputFormat.addInputPath(job,new Path("/tmp/test.in3"));
 
-        FileOutputFormat.setOutputPath(job,new Path(args[1]));
+        FileOutputFormat.setOutputPath(job,new Path("/tmp/test.out4"));
 
         job.setMapperClass(MonMapper.class);
         job.setMapOutputKeyClass(Text.class);
