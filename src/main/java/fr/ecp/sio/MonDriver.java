@@ -4,6 +4,8 @@ package fr.ecp.sio;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -37,7 +39,11 @@ public class MonDriver extends Configured implements Tool{
         FileOutputFormat.setOutputPath(job,new Path(args[1]));
 
         job.setMapperClass(MonMapper.class);
-        //job.setNumReduceTasks(0);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(FloatWritable.class);
+
+        job.setReducerClass(MonReducer.class);
+        job.setNumReduceTasks(1);
 
 
         job.submit();
